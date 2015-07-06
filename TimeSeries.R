@@ -1,3 +1,10 @@
+##Ashris Choudhury
+#Summer Intern
+#ETH Zurich
+
+#ECP Package
+library("ecp")
+
 #Import the two data streams
 WaspCity <- read.csv("C:/Users/Information Arch/Desktop/ESUM'/WaspCity.csv", header=FALSE, comment.char="#")
 WaspGas <- read.csv("C:/Users/Information Arch/Desktop/ESUM'/WaspGas.csv", header=FALSE, comment.char="#")
