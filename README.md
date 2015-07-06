@@ -7,14 +7,14 @@ The program takes one minute to run for 1 MB data approximately.
 To plot the graph for X, you need to type p("X")
 where
 
-Temperature is T
-Pressure is P
-Humidity is H
-CO2 is C
-NO2 is N
-AP1 is A1
-AP2 is A2
-O3 is O
-Sound Pressure is S
-Illuminance is L
-Dust is D
+  Temperature is T;
+  Pressure is P;
+  Humidity is H;
+  CO2 is C;
+  NO2 is N;
+  AP1 is A1;
+  AP2 is A2;
+  O3 is O;
+  Sound Pressure is S;
+  Illuminance is L;
+  Dust is D;
