@@ -6,8 +6,8 @@
 library("ecp")
 
 #Import the two data streams
-WaspCity <- read.csv("C:/Users/Information Arch/Desktop/ESUM'/WaspCity.csv", header=FALSE, comment.char="#")
-WaspGas <- read.csv("C:/Users/Information Arch/Desktop/ESUM'/WaspGas.csv", header=FALSE, comment.char="#")
+WaspCity <- read.csv("./WaspCity.csv", header=FALSE, comment.char="#")
+WaspGas <- read.csv("./WaspGas.csv", header=FALSE, comment.char="#")
 
 #Data Cleaning Begins
 #Convert to character frame
