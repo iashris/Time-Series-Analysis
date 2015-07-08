@@ -4,8 +4,9 @@
 
 #ECP Package
 library("ecp")
-
+#Ashris Choudhury #Summer Intern #ETHZ
 #Import the two data streams
+
 WaspCity <- read.csv("./WaspCity.csv", header=FALSE, comment.char="#")
 WaspGas <- read.csv("./WaspGas.csv", header=FALSE, comment.char="#")
 
@@ -38,7 +39,7 @@ gas_extract<-function(x,colid){
   a<-strsplit(x[,colid],"-")
   for (x in 1:length(a)){
     splitt<-strsplit(a[[x]]," ")
-    #Extract only the kohm value
+    #Extract only the kohm value//
     a[x]<-gsub("[^0-9.]","",splitt[2])
     
   }
@@ -79,17 +80,19 @@ G<-lapply(Gas,timemak,fr=15)
 
 #Customized plot
 p<-function(h){
-  if(h=="T") plot(G$T,main="Temperature variation",ylab="Temperature",xlab="Time in Minutes")
-  if(h=="P") plot(G$P,main="Pressure variation",ylab="Pressure",xlab="Time in Minutes")
-  if(h=="H") plot(G$H,main="Humidity variation",ylab="Humidity",xlab="Time in Minutes")
-  if(h=="O") plot(G$O,main="Ozone variation",ylab="Ozone",xlab="Time in Minutes")
-  if(h=="C") plot(G$C,main="Carbon Dioxide variation",ylab="CO2",xlab="Time in Minutes")
-  if(h=="N") plot(G$N,main="Nitrogen Dioxide variation",ylab="NO2",xlab="Time in Minutes")
-  if(h=="A1") plot(G$AP1,main="AP1 variation",ylab="AP1",xlab="Time in Minutes")
-  if(h=="A2") plot(G$AP2,main="AP2 variation",ylab="AP2",xlab="Time in Minutes")
-  if(h=="S") plot(C$S,main="Sound Pressure variation",ylab="Sound",xlab="Time in Minutes")
-  if(h=="L") plot(C$L,main="Illuminance variation",ylab="Illuminance",xlab="Time in Minutes")
-  if(h=="D") plot(C$D,main="Dust variation",ylab="Dust",xlab="Time in Minutes")
+
+  
+  if(h=="T") plot(G$T,main="Temperature variation",ylab="Temperature",xlab="Time in Minutes",lwd=2)
+  if(h=="P") plot(G$P,main="Pressure variation",ylab="Pressure",xlab="Time in Minutes",lwd=2)
+  if(h=="H") plot(G$H,main="Humidity variation",ylab="Humidity",xlab="Time in Minutes",lwd=2)
+  if(h=="O") plot(G$O,main="Ozone variation",ylab="Ozone",xlab="Time in Minutes",lwd=2)
+  if(h=="C") plot(G$C,main="Carbon Dioxide variation",ylab="CO2",xlab="Time in Minutes",lwd=2)
+  if(h=="N") plot(G$N,main="Nitrogen Dioxide variation",ylab="NO2",xlab="Time in Minutes",lwd=2)
+  if(h=="A1") plot(G$AP1,main="AP1 variation",ylab="AP1",xlab="Time in Minutes",lwd=2)
+  if(h=="A2") plot(G$AP2,main="AP2 variation",ylab="AP2",xlab="Time in Minutes",lwd=2)
+  if(h=="S") plot(C$S,main="Sound Pressure variation",ylab="Sound",xlab="Time in Minutes",lwd=2)
+  if(h=="L") plot(C$L,main="Illuminance variation",ylab="Illuminance",xlab="Time in Minutes",lwd=2)
+  if(h=="D") plot(C$D,main="Dust variation",ylab="Dust",xlab="Time in Minutes",lwd=2)
   a(h)
   
 }
@@ -107,20 +110,26 @@ bpgenerator<-function(x,fr){
 }
 CMind<-lapply(CM,bpgenerator,fr=23)
 GMind<-lapply(GM,bpgenerator,fr=15)
-#These contain the time stamp in minutes of the break
+#These contain the time stamp in minutes of the breakpoint
 
 #Overlays
 a<-function(h){
-    if(h=="T") abline(v=GMind$T,col="red")
-    if(h=="P") abline(v=GMind$P,col="red")
-    if(h=="H") abline(v=GMind$H,col="red")
-    if(h=="O") abline(v=GMind$O,col="red")
-    if(h=="C") abline(v=GMind$C,col="red")
-    if(h=="N") abline(v=GMind$N,col="red")
-    if(h=="A1") abline(v=GMind$AP1,col="red")
-    if(h=="A2") abline(v=GMind$AP2,col="red")
-    if(h=="S") abline(v=CMind$S,col="red")
-    if(h=="L") abline(v=CMind$L,col="red")
-    if(h=="D") abline(v=CMind$D,col="red")
+    if(h=="T") abline(v=GMind$T,col="#133D40",lwd=2)
+    if(h=="P") abline(v=GMind$P,col="#133D40",lwd=2)
+    if(h=="H") abline(v=GMind$H,col="#133D40",lwd=2)
+    if(h=="O") abline(v=GMind$O,col="#133D40",lwd=2)
+    if(h=="C") abline(v=GMind$C,col="#133D40",lwd=2)
+    if(h=="N") abline(v=GMind$N,col="#133D40",lwd=2)
+    if(h=="A1") abline(v=GMind$AP1,col="#133D40",lwd=2)
+    if(h=="A2") abline(v=GMind$AP2,col="#133D40",lwd=2)
+    if(h=="S") abline(v=CMind$S,col="#133D40",lwd=2)
+    if(h=="L") abline(v=CMind$L,col="#133D40",lwd=2)
+    if(h=="D") abline(v=CMind$D,col="#133D40",lwd=2)
     
+}
+
+plotall<-function(m,n){
+  if(m*n<11){print("Please make sure that m x n is atleast 11")}
+  old.par<-par(mfrow=c(m,n),bg="#ffffff",col="#BF362A",col.axis="#133D40",col.lab="#133D40",col.main="#133D40",col.sub="#133D40")
+  p("T");p("P");p("H");p("O");p("C");p("N");p("S");p("L");p("D");p("A1");p("A2")
 }
