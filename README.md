@@ -18,3 +18,6 @@ where
   Sound Pressure is S;
   Illuminance is L;
   Dust is D;
+  
+  
+  plotall(x,y) plots all the graphs in x rows and y columns
